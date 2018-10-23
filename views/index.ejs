@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>Buscar Endereço pelo CEP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="./images/icone.png" />
+
+  <!-- Import CSS Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+</head>
+
+<body>
+
+  <main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Buscar endereço pelo CEP</h6>
+      <div class="media text-muted pt-3">
+        <form class="card p-2" action="/" method="POST">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="CEP" name="cep">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-secondary">Pesquisar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <hr/>
+        <% if(flag != 0){ //Verifica se digitou algum CEP 
+          %>
+          <% if((flag == 200) && !(resposta.hasOwnProperty('erro'))){ //Verifica se servidor retornou valores válidos %>
+          <!-- Resposta com SUCESSO-->
+          <h5>CEP: <%= resposta.cep %> - Código IBGE: <%= resposta.ibge %> </h5><br/>
+          <h5>Logradouro: <%= resposta.logradouro %></h5><br/>
+          <h5>Bairro: <%= resposta.bairro %> |  <%= resposta.localidade %> - <%= resposta.uf %> </h5><br/>
+          <!-- FIM Resposta com SUCESSO-->
+          <% }else{%>
+          <!-- Resposta servidor ERROR-->
+          <div class="alert alert-danger" role="alert">CEP não foi encontrado!</div>
+          <!-- FIM Resposta servidor ERROR-->
+        <%}
+        }%>
+      <hr/>
+      <small class="d-block text-right mt-3">
+          <span class="cls_footer">
+              by Jônathas Assunção | Goiânia - GO | <a href="https://www.facebook.com/jonathas.assuncao.35"><img class="img_footer" src="./images/facebook.png"></a> <a href="https://plus.google.com/u/0/105432877782806696266"><img class="img_footer" src="./images/google.png"></a> <a href="https://github.com/jonassuncao"><img class="img_footer" src="./images/github.jpg"></a>
+          </span>
+      </small>
+    </div>
+  </main>
+
+</body>
+
 </html>
+
+<!-- Inicio Import JS Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
+<!-- FIM Import JS Bootstrap -->

@@ -1,8 +1,11 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+  background-image: url("../images/background.jpg");
 }
 
-a {
-  color: #00B7FF;
+.img_footer{
+  width: 2vw;
+  border-radius: 2px;
+  padding: 1px;
+  vertical-align: -15%;
 }
